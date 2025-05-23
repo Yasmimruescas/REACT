@@ -4,10 +4,12 @@ import Navbar from './components/navbar/NavBar';
 import Home from './home/Home'
 import Cadastro from './pages/cadastro/Cadastro';
 import Login from './pages/Login/Login';
+import { AuthProvider } from './contexts/AuthContext';
 
 function App() {
   return (
     <>
+    <AuthProvider>
         <BrowserRouter>
           <Navbar />
           <div className="min-h-[80vh]">
@@ -20,6 +22,7 @@ function App() {
           </div>
           <Footer />
         </BrowserRouter>
+        </AuthProvider>
     </>
   )
 }
