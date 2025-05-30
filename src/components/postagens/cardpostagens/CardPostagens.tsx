@@ -6,6 +6,10 @@ interface CardPostagensProps {
 }
 
 function CardPostagem({ postagem }: CardPostagensProps) {
+    const fotoPerfil = postagem.usuario?.foto && postagem.usuario.foto.trim() !== ''
+        ? postagem.usuario.foto
+        : "https://static.vecteezy.com/system/resources/previews/005/544/770/original/profile-icon-design-free-vector.jpg"
+
     return (
         <div className='border-slate-900 border 
             flex flex-col rounded overflow-hidden justify-between'>
@@ -13,11 +17,12 @@ function CardPostagem({ postagem }: CardPostagensProps) {
             <div>
                 <div className="flex w-full bg-indigo-400 py-2 px-4 items-center gap-4">
                     <img
-                        src={postagem.usuario?.foto}
+                        src={fotoPerfil}
                         className='h-12 rounded-full'
-                        alt={postagem.usuario?.nome} />
+                        alt={postagem.usuario?.nome || "Usuário"}
+                    />
                     <h3 className='text-lg font-bold text-center uppercase'>
-                        {postagem.usuario?.nome}
+                        {postagem.usuario?.nome || "Usuário"}
                     </h3>
                 </div>
                 <div className='p-4 '>
@@ -33,14 +38,14 @@ function CardPostagem({ postagem }: CardPostagensProps) {
             <div className="flex">
                 
                  <Link to={`/editarpostagem/${postagem.id}`}
-	                className='w-full text-slate-100 bg-indigo-400 hover:bg-indigo-800 
+                    className='w-full text-slate-100 bg-indigo-400 hover:bg-indigo-800 
                     flex items-center justify-center py-2'>
-	                <button>Editar</button>
+                    <button>Editar</button>
                 </Link>
                 <Link to={`/deletarpostagem/${postagem.id}`} 
-	                className='text-white bg-red-400 
-	                hover:bg-red-700 w-full flex items-center justify-center'>
-	                <button>Deletar</button>
+                    className='text-white bg-red-400 
+                    hover:bg-red-700 w-full flex items-center justify-center'>
+                    <button>Deletar</button>
                 </Link>
             </div>
         </div>
