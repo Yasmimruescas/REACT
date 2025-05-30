@@ -40,20 +40,24 @@ function ListaTemas() {
     
     return (
         <>
-        {temas.length === 0 && (
-            <DNA
-            visible={true}
-            height="200"
-            width="200"
-            ariaLabel="dna-loading"
-            wrapperStyle={{}}
-            wrapperClass="dna-wrapper mx-auto"
-        />
-        )}
-            <div className="flex justify-center w-full my-4">
-                <div className="container flex flex-col">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                       {temas.map((tema) => (
+            {temas.length === 0 && (
+                <div className="flex justify-center items-center h-[50vh]">
+                    <DNA
+                        visible={true}
+                        height="120"
+                        width="120"
+                        ariaLabel="dna-loading"
+                        wrapperClass="dna-wrapper"
+                    />
+                </div>
+            )}
+            <div className="flex justify-center w-full px-4 bg-gradient-to-r from-purple-600 to-purple-900">
+                <div className="container my-8">
+                    <h2 className="text-4xl text-white font-bold mb-6 text-center">
+                        Temas Disponíveis
+                    </h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {temas.map((tema) => (
                             <CardTemas key={tema.id} tema={tema} />
                         ))}
                     </div>

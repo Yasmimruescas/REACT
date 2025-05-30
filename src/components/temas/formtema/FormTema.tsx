@@ -92,38 +92,47 @@ function FormTema() {
     }
 
     return (
-        <div className="container flex flex-col items-center justify-center mx-auto">
-            <h1 className="text-4xl text-center my-8">
+        <div className="container flex flex-col items-center justify-center mx-auto p-4">
+            <h1 className="text-4xl font-bold text-indigo-700 mb-6 text-center">
                 {id === undefined ? 'Cadastrar Tema' : 'Editar Tema'}
             </h1>
 
-            <form className="w-1/2 flex flex-col gap-4" onSubmit={gerarNovoTema}>
+            <form
+                className="w-full max-w-xl bg-white shadow-lg rounded-2xl p-6 space-y-6 border border-indigo-200"
+                onSubmit={gerarNovoTema}
+            >
                 <div className="flex flex-col gap-2">
-                    <label htmlFor="descricao">Descrição do Tema</label>
+                    <label
+                        htmlFor="descricao"
+                        className="text-sm font-semibold text-indigo-800"
+                    >
+                        Descrição do Tema
+                    </label>
                     <input
                         type="text"
                         placeholder="Descreva aqui seu tema"
-                        name='descricao'
-                        className="border-2 border-slate-700 rounded p-2"
+                        name="descricao"
+                        className="border-2 border-indigo-300 focus:border-indigo-500 outline-none rounded-xl p-3 text-gray-800"
                         value={tema.descricao}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                        onChange={atualizarEstado}
                     />
                 </div>
+
                 <button
-                    className="rounded text-slate-100 bg-indigo-400 
-                               hover:bg-indigo-800 w-1/2 py-2 mx-auto flex justify-center"
-                    type="submit">
-                    {isLoading ?
+                    className="bg-indigo-600 text-white font-semibold rounded-xl py-2 px-6 hover:bg-indigo-800 transition-colors flex justify-center items-center mx-auto w-40"
+                    type="submit"
+                >
+                    {isLoading ? (
                         <RotatingLines
                             strokeColor="white"
                             strokeWidth="5"
                             animationDuration="0.75"
                             width="24"
                             visible={true}
-                        /> :
+                        />
+                    ) : (
                         <span>{id === undefined ? 'Cadastrar' : 'Atualizar'}</span>
-
-                    }
+                    )}
                 </button>
             </form>
         </div>
