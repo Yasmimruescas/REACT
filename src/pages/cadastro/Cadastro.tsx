@@ -56,6 +56,7 @@ function Cadastro() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 h-screen overflow-hidden bg-gradient-to-br from-indigo-900 via-purple-800 to-indigo-700 text-white font-semibold">
       <form
+        autoComplete="off"
         onSubmit={cadastrarNovoUsuario}
         className="flex justify-center items-center flex-col w-full max-w-md gap-4 p-6 mx-auto h-screen"
       >
@@ -68,6 +69,7 @@ function Cadastro() {
             id="nome"
             name="nome"
             placeholder="Digite seu nome"
+            autoComplete="off"
             className="bg-white text-gray-800 border border-purple-400 rounded-xl p-2 focus:outline-none focus:ring-2 focus:ring-purple-600"
             value={usuario.nome}
             onChange={atualizarEstado}
@@ -81,6 +83,7 @@ function Cadastro() {
             id="usuario"
             name="usuario"
             placeholder="Digite seu usuário"
+            autoComplete="off"
             className="bg-white text-gray-800 border border-purple-400 rounded-xl p-2 focus:outline-none focus:ring-2 focus:ring-purple-600"
             value={usuario.usuario}
             onChange={atualizarEstado}
@@ -94,6 +97,7 @@ function Cadastro() {
             id="foto"
             name="foto"
             placeholder="Link da foto de perfil"
+            autoComplete="off"
             className="bg-white text-gray-800 border border-purple-400 rounded-xl p-2 focus:outline-none focus:ring-2 focus:ring-purple-600"
             value={usuario.foto}
             onChange={atualizarEstado}
@@ -107,10 +111,14 @@ function Cadastro() {
             id="senha"
             name="senha"
             placeholder="Crie uma senha"
+            autoComplete="new-password"
             className="bg-white text-gray-800 border border-purple-400 rounded-xl p-2 focus:outline-none focus:ring-2 focus:ring-purple-600"
             value={usuario.senha}
             onChange={atualizarEstado}
           />
+          {usuario.senha.length > 0 && usuario.senha.length < 8 && (
+            <span className="text-red-400 text-xs mt-1">A senha deve ter no mínimo 8 caracteres.</span>
+          )}
         </div>
 
         <div className="flex flex-col w-full">
@@ -120,6 +128,7 @@ function Cadastro() {
             id="confirmarSenha"
             name="confirmarSenha"
             placeholder="Confirme sua senha"
+            autoComplete="new-password"
             className="bg-white text-gray-800 border border-purple-400 rounded-xl p-2 focus:outline-none focus:ring-2 focus:ring-purple-600"
             value={confirmaSenha}
             onChange={handleConfirmarSenha}
@@ -154,7 +163,7 @@ function Cadastro() {
       </form>
 
       <div className="hidden lg:flex items-center justify-center h-screen overflow-hidden">
-                <div className="fundoCadastro hidden lg:block"></div>
+        <div className="fundoCadastro hidden lg:block"></div>
       </div>
     </div>
   );
