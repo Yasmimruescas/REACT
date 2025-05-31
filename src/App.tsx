@@ -19,7 +19,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function App() {
   return (
     <AuthProvider>
-      <ToastContainer />
+      <ToastContainer/>
       <BrowserRouter>
         <Navbar />
         <div className="min-h-[80vh]">
